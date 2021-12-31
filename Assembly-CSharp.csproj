@@ -44,6 +44,7 @@
      <Compile Include="Assets\_Project\Script\Input\GenericXRController.cs" />
      <Compile Include="Assets\_Project\Script\Grabbing.cs" />
      <Compile Include="Assets\_Project\Script\Grabable.cs" />
+     <Compile Include="Assets\_Project\Script\movement.cs" />
      <Compile Include="Assets\_Project\Script\Manager\InputManager.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -722,6 +723,10 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="ControllerSample.csproj">
+      <Project>{de6702d6-35ba-d8fa-84fe-7743b80c72ba}</Project>
+      <Name>ControllerSample</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
