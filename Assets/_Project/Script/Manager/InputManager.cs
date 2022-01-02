@@ -19,6 +19,10 @@ public class InputManager : MonoBehaviour
     public static UnityEvent<float> OnTriggerLefthandUpdated = new UnityEvent<float>();
     public static UnityEvent OnTriggerLeftHandReleased = new UnityEvent();
     
+    public static UnityEvent OnPButtonLeftHandPressed = new UnityEvent();
+    public static UnityEvent<float> OnPButtonLefthandUpdated = new UnityEvent<float>();
+    public static UnityEvent OnPButtonLeftHandReleased = new UnityEvent();
+    
     public static UnityEvent OnGripRightHandPressed = new UnityEvent();
     public static UnityEvent<float> OnGripRighthandUpdated = new UnityEvent<float>();
     public static UnityEvent OnGripRightHandReleased = new UnityEvent();
@@ -38,6 +42,8 @@ public class InputManager : MonoBehaviour
     protected bool leftTriggerPressed;
     public bool rightTriggerPressed;
 
+    public bool LeftPButtonPressed;
+
     public static InputManager instance;
     private void Awake()
     {
@@ -56,6 +62,7 @@ public class InputManager : MonoBehaviour
         inputActions.RightController.Trigger.performed += PressTriggerR;
         inputActions.LeftController.Grip.performed += PressGripL;
         inputActions.LeftController.Trigger.performed += PressTriggerL;
+        inputActions.LeftController.A_button.performed += PressPButtonL;
         inputActions.Enable();
     }
     
@@ -164,5 +171,13 @@ public class InputManager : MonoBehaviour
             leftTriggerPressed = false;
             Debug.Log("You Released the Left hand Trigger");
         }
+    }
+
+    private void PressPButtonL(InputAction.CallbackContext obj)
+    {
+        OnPButtonLeftHandPressed.Invoke();
+        LeftPButtonPressed = true;
+        Debug.Log("You pressed the Primary button on the left hand");
+        LeftPButtonPressed = false;
     }
 }

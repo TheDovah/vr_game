@@ -79,6 +79,14 @@ public class @GenericXRController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""A_button"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e5151bf-79ad-4d8b-8217-0b84de7175e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -103,6 +111,17 @@ public class @GenericXRController : IInputActionCollection, IDisposable
                     ""action"": ""Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b600f10-a404-4421-8eab-c5324655f89e"",
+                    ""path"": ""<XRController>{LeftHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""A_button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -117,6 +136,7 @@ public class @GenericXRController : IInputActionCollection, IDisposable
         m_LeftController = asset.FindActionMap("LeftController", throwIfNotFound: true);
         m_LeftController_Grip = m_LeftController.FindAction("Grip", throwIfNotFound: true);
         m_LeftController_Trigger = m_LeftController.FindAction("Trigger", throwIfNotFound: true);
+        m_LeftController_A_button = m_LeftController.FindAction("A_button", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -209,12 +229,14 @@ public class @GenericXRController : IInputActionCollection, IDisposable
     private ILeftControllerActions m_LeftControllerActionsCallbackInterface;
     private readonly InputAction m_LeftController_Grip;
     private readonly InputAction m_LeftController_Trigger;
+    private readonly InputAction m_LeftController_A_button;
     public struct LeftControllerActions
     {
         private @GenericXRController m_Wrapper;
         public LeftControllerActions(@GenericXRController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Grip => m_Wrapper.m_LeftController_Grip;
         public InputAction @Trigger => m_Wrapper.m_LeftController_Trigger;
+        public InputAction @A_button => m_Wrapper.m_LeftController_A_button;
         public InputActionMap Get() { return m_Wrapper.m_LeftController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +252,9 @@ public class @GenericXRController : IInputActionCollection, IDisposable
                 @Trigger.started -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnTrigger;
                 @Trigger.performed -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnTrigger;
                 @Trigger.canceled -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnTrigger;
+                @A_button.started -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnA_button;
+                @A_button.performed -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnA_button;
+                @A_button.canceled -= m_Wrapper.m_LeftControllerActionsCallbackInterface.OnA_button;
             }
             m_Wrapper.m_LeftControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -240,6 +265,9 @@ public class @GenericXRController : IInputActionCollection, IDisposable
                 @Trigger.started += instance.OnTrigger;
                 @Trigger.performed += instance.OnTrigger;
                 @Trigger.canceled += instance.OnTrigger;
+                @A_button.started += instance.OnA_button;
+                @A_button.performed += instance.OnA_button;
+                @A_button.canceled += instance.OnA_button;
             }
         }
     }
@@ -253,5 +281,6 @@ public class @GenericXRController : IInputActionCollection, IDisposable
     {
         void OnGrip(InputAction.CallbackContext context);
         void OnTrigger(InputAction.CallbackContext context);
+        void OnA_button(InputAction.CallbackContext context);
     }
 }
