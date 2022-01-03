@@ -178,6 +178,5 @@ public class InputManager : MonoBehaviour
         OnPButtonLeftHandPressed.Invoke();
         LeftPButtonPressed = true;
         Debug.Log("You pressed the Primary button on the left hand");
-        LeftPButtonPressed = false;
     }
 }
