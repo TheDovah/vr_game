@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f78c41f8-d19a-44af-bd4d-0145cbdcdf0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR_game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR_game/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f78c41f8-d19a-44af-bd4d-0145cbdcdf0c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +96,7 @@
       <workItem from="1640981555908" duration="342000" />
       <workItem from="1640982475513" duration="2892000" />
       <workItem from="1641134571008" duration="707000" />
-      <workItem from="1641214884702" duration="9174000" />
+      <workItem from="1641214884702" duration="9687000" />
     </task>
     <servers />
   </component>
